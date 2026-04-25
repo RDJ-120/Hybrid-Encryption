@@ -1,124 +1,70 @@
-Hybrid-Encryption CLI Tool
+# Hybrid Encryption CLI Tool (Node.js)
 
-Overview
+## Overview
 
-This project is a command-line tool written in JavaScript that implements Hybrid Encryption, combining the strengths of symmetric and asymmetric cryptography.
+A command-line tool built with Node.js that implements Hybrid Encryption
+using a combination of symmetric and asymmetric cryptography.
 
-The tool uses:
+-   AES-256-CBC is used for fast data encryption
+-   RSA (2048-bit) is used for secure key exchange
 
-- AES (Advanced Encryption Standard) for fast and secure data encryption
-- RSA (Rivest–Shamir–Adleman) for secure key exchange
+The tool supports encryption and decryption of text, files, and
+directories with optional recursive processing.
 
-This approach ensures both performance and security when encrypting files, directories, or text data.
+------------------------------------------------------------------------
 
----
+## Features
 
-Features
+-   Hybrid Encryption (AES + RSA)
+-   Encrypt / Decrypt:
+    -   Text
+    -   Files
+    -   Directories
+-   Recursive directory processing (--deep)
+-   Automatic RSA key generation
+-   Secure AES key handling (encrypted with RSA)
+-   Interactive CLI prompts or full CLI argument control
+-   Colored terminal output using chalk
 
-- Encrypt and decrypt:
-  - Files
-  - Directories (with optional recursion)
-  - Raw text input
-- Hybrid encryption (AES + RSA)
-- Secure key generation
-- CLI-based usage with flexible options
-- Optional deep encryption for directories
-- Password protection support (if implemented)
+------------------------------------------------------------------------
 
----
+## Technologies Used
 
-How It Works
+Node.js (ES Modules) yargs crypto (built-in) fs (built-in) path
+(built-in) prompt-sync chalk
 
-1. A random AES key is generated.
-2. Data is encrypted using AES.
-3. The AES key is encrypted using RSA.
-4. Both the encrypted data and encrypted AES key are stored or transmitted.
+------------------------------------------------------------------------
 
-During decryption:
+## Installation
 
-1. RSA decrypts the AES key.
-2. AES decrypts the data.
+    git clone <your-repo-url>
+    cd <project-folder>
+    npm install
 
----
+------------------------------------------------------------------------
 
-Installation
+## Usage
 
-git clone <your-repo-url>
-cd <your-project-folder>
-npm install
+    node CLI-Hybrid.js --mode=<encrypt|decrypt> --type=<text|file|dir> --target="<value>" [options]
 
----
+------------------------------------------------------------------------
 
-Usage
+## CLI Options
 
-node CLI-Hybrid.js --mode=<encrypt|decrypt> --type=<file|dir|text> --target="<path>" [options]
+  Option       Type      Description
+  ------------ --------- -----------------------------------------
+  --mode       string    encrypt or decrypt
+  --type       string    text, file, or dir
+  --target     string    Target input (text or path)
+  --have-aes   boolean   Use existing AES key
+  --have-rsa   boolean   Use existing RSA keys
+  --deep       boolean   Recursive processing (directories only)
+  --public     string    Path to RSA public key
+  --private    string    Path to RSA private key
+  --aes-key    string    Path to encrypted AES key
 
----
+------------------------------------------------------------------------
 
-Options
+## License
 
-Option| Description
-"--mode"| Operation mode: "encrypt" or "decrypt"
-"--type"| Target type: "file", "dir", or "text"
-"--target"| File path, directory path, or text input
-"--have-aes"| Enable AES encryption
-"--have-rsa"| Enable RSA encryption
-"--deep"| Apply operation recursively on directories
-
----
-
-Examples
-
-Encrypt a File
-
-node CLI-Hybrid.js --mode=encrypt --type=file --target="example.txt" --have-aes --have-rsa
-
-Decrypt a File
-
-node CLI-Hybrid.js --mode=decrypt --type=file --target="example.enc" --have-aes --have-rsa
-
-Encrypt a Directory Recursively
-
-node CLI-Hybrid.js --mode=encrypt --type=dir --target="./data" --deep --have-aes --have-rsa
-
----
-
-Project Structure
-
-/project-root
-│
-├── CLI-Hybrid.js        # Main CLI entry point
-├── encryption/          # AES and RSA logic
-├── utils/               # Helper functions
-├── keys/                # Key storage (if applicable)
-└── package.json
-
----
-
-Security Notes
-
-- Keep private RSA keys secure and never expose them.
-- Do not reuse AES keys across multiple encryptions.
-- Ensure proper randomness when generating keys and IVs.
-- Avoid storing sensitive data in plaintext.
-
----
-
-Requirements
-
-- Node.js (v16 or higher recommended)
-
----
-
-Future Improvements
-
-- Key management system
-- GUI interface
-- Performance optimizations for large directories
-- Logging and error tracking enhancements
-
----
-
-License
-
-This project is licensed under the MIT License.
+MIT License
