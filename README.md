@@ -50,7 +50,7 @@ Node.js (ES Modules) yargs crypto (built-in) fs (built-in) path
   <img src="https://github.com/user-attachments/assets/e8633432-fdc4-43e6-93e4-8cfb195a1891" width="32%" alt="Result Hash">
 </p>
 
-    node CLI-Hybrid.js --mode=<encrypt|decrypt> --type=<text|file|dir> --target="<value>" [options]
+    node Hybrid.js --mode=<encrypt|decrypt> --type=<text|file|dir> --target="<value>" [options]
 
 ------------------------------------------------------------------------
 
