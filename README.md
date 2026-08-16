@@ -37,13 +37,18 @@ Node.js (ES Modules) yargs crypto (built-in) fs (built-in) path
 
 ## Installation
 
-    git clone <your-repo-url>
-    cd <project-folder>
+    git clone https://github.com/RDJ-120/Hybrid-Encryption
+    cd Hybrid-Encryption
     npm install
 
 ------------------------------------------------------------------------
 
 ## Usage
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/60499015-e71b-4f6d-a8ec-9d5a30a201f3" width="32%" alt="RSA Key Spec">
+  <img src="https://github.com/user-attachments/assets/d5187e3d-f043-4734-a85c-d71366444cf5" width="32%" alt="Key File Spec">
+  <img src="https://github.com/user-attachments/assets/e8633432-fdc4-43e6-93e4-8cfb195a1891" width="32%" alt="Result Hash">
+</p>
 
     node CLI-Hybrid.js --mode=<encrypt|decrypt> --type=<text|file|dir> --target="<value>" [options]
 
